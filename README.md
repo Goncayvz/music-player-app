@@ -6,6 +6,8 @@ Bu proje, **FreeCodeCamp Playlist projesinden esinlenilerek** geliştirilen, mod
 Amacı; daha hızlı, daha şık, daha etkileşimli ve kullanıcı dostu bir medya oynatma deneyimi sunmaktır.
 
 ## 🚀 Özellikler
+## ✨Canlı DEMO lİNKİ
+https://goncayvz.github.io/music-player-app/
 
 ### 🎨 Tema Yönetimi
 - 🌙 **Dark Tema**
