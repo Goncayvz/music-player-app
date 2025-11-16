@@ -7,7 +7,6 @@ Amacı; daha hızlı, daha şık, daha etkileşimli ve kullanıcı dostu bir med
 
 ## 🚀 Özellikler
 ## ✨Canlı DEMO lİNKİ
-## 🚀 Canlı Demo
 
 [![Canlı Demo](https://img.shields.io/badge/🎵_Canlı_Demo'yu_Dene-ec4899?style=for-the-badge&logo=github&logoColor=white)](https://goncayvz.github.io/music-player-app/)
 
