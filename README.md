@@ -62,7 +62,7 @@ Aşağıdaki kısayollar uygulamanın tüm medya, ses, tema ve arayüz fonksiyon
 ## 🛠️ Kurulum
 
 ```bash
-git clone https://github.com/KULLANICI_ADI/Dasha.git
+git clone https://github.com/>Goncayvz/Dasha.git
 cd Dasha
 
 📜 Lisans
