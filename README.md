@@ -7,6 +7,8 @@ Amacı; daha hızlı, daha şık, daha etkileşimli ve kullanıcı dostu bir med
 
 ## 🚀 Özellikler
 ## ✨Canlı DEMO lİNKİ
+[Canlı Demo Linki](https://goncayvz.github.io/music-player-app/)
+
 
 ### 🎨 Tema Yönetimi
 - 🌙 **Dark Tema**
