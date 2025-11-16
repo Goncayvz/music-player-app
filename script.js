@@ -1,6 +1,21 @@
+// Buton durumunu güncelleyen fonksiyon
+function updatePlayPauseButton(action) {
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const playSVG = `<svg width="14" height="16" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0L16.1852 9.5L1.88952e-07 19L0 0Z"/></svg>`;
+    const pauseSVG = `<svg width="14" height="16" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.54013e-07H4.75V19H0V6.54013e-07Z"/><path d="M11.4 0H16.15V19H11.4V0Z"/></svg>`;
+    
+    playPauseBtn.innerHTML = action === 'play' ? playSVG : pauseSVG;
+    playPauseBtn.setAttribute('aria-label', action === 'play' ? 'Play' : 'Pause');
+    
+    // CSS class güncelleme
+    if (action === 'play') {
+        playPauseBtn.classList.remove('playing');
+    } else {
+        playPauseBtn.classList.add('playing');
+    }
+}
 const playlistSongs = document.getElementById("playlist-songs");
-const playButton = document.getElementById("play");
-const pauseButton = document.getElementById("pause");
+const playPauseBtn = document.getElementById("play-pause-btn");
 const nextButton = document.getElementById("next");
 const previousButton = document.getElementById("previous");
 const shuffleButton = document.getElementById("shuffle");
@@ -95,6 +110,13 @@ let userData = {
   repeatMode:"off",
   theme: "dark"
 };
+const togglePlayPause = () => {
+    if (audio.paused) {
+        playSong(userData?.currentSong?.id || userData?.songs[0]?.id);
+    } else {
+        pauseSong();
+    }
+}; 
 
 // volume kontrol
 const updateVolume =()=>{
@@ -224,7 +246,7 @@ const playSong = (id) => {
     audio.currentTime = userData?.songCurrentTime;
   }
   userData.currentSong = song;
-  playButton.classList.add("playing");
+  updatePlayPauseButton('pause');
 
   highlightCurrentSong();
   setPlayerDisplay();
@@ -234,7 +256,7 @@ const playSong = (id) => {
 
 const pauseSong = () => {
   userData.songCurrentTime = audio.currentTime;
-  playButton.classList.remove("playing");
+  updatePlayPauseButton('play');
   audio.pause();
   updateProgressBar();
 };
@@ -355,23 +377,11 @@ const renderSongs = (array) => {
 const setPlayButtonAccessibleText = () => {
   const song = userData?.currentSong || userData?.songs[0];
 
-  playButton.setAttribute(
-    "aria-label",
-    song?.title ? `Play ${song.title}` : "Play"
-  );
+ playPauseBtn.setAttribute("aria-label", song?.title ? `Play ${song.title}` : "Play");
 };
 
 const getCurrentSongIndex = () => userData?.songs.indexOf(userData?.currentSong);
-
-playButton.addEventListener("click", () => {
-    if (userData?.currentSong === null) {
-    playSong(userData?.songs[0].id);
-  } else {
-    playSong(userData?.currentSong.id);
-  }
-});
-
-pauseButton.addEventListener("click",  pauseSong);
+playPauseBtn.addEventListener("click", togglePlayPause);
 
 nextButton.addEventListener("click", playNextSong);
 
