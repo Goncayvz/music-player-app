@@ -1,6 +1,6 @@
 :root {
   /* colors */
-   --primary-color: #e2e8f0;
+  --primary-color: #e2e8f0;
   --secondary-color: #a94f50;
   --app-background-color: #4768b6;
   --background-color: #3a4d6c;
@@ -63,8 +63,7 @@ ul {
 }
 
 .player {
-background: linear-gradient(135deg, var(--background-color) 0%, #2d3748 100%);
-
+  background: linear-gradient(135deg, var(--background-color) 0%, #2d3748 100%);
 }
 
 .player-bar,
@@ -76,8 +75,8 @@ background: linear-gradient(135deg, var(--background-color) 0%, #2d3748 100%);
   width: 100%;
   height: 30px;
   background-color: var(--foreground-color);
-  gap:10px;
-  min-width:0;
+  gap: 10px;
+  min-width: 0;
 }
 
 .parallel-lines {
@@ -93,12 +92,14 @@ background: linear-gradient(135deg, var(--background-color) 0%, #2d3748 100%);
   min-width: 75px;
   background-color: var(--highlight-color);
 }
-.fcc-title{
+
+.fcc-title {
   font-family: var(--font-headline);
-  margin:0px;
-  font-size:x-large;
+  margin: 0px;
+  font-size: x-large;
   color: var(--primary-color);
 }
+
 .playlist-title {
   color: var(--primary-color);
   margin: 0 3px;
@@ -113,7 +114,7 @@ background: linear-gradient(135deg, var(--background-color) 0%, #2d3748 100%);
   width: 445px;
   height: 250px;
   padding: 15px;
-  gap:15px;
+  gap: 15px;
 }
 
 #player-album-art {
@@ -129,9 +130,9 @@ background: linear-gradient(135deg, var(--background-color) 0%, #2d3748 100%);
 .player-display {
   display: flex;
   gap: 15px;
-  flex:0 0 auto;
+  flex: 0 0 auto;
   background-color: var(--background-color);
-  align-items:center;
+  align-items: center;
 }
 
 .player-display-song-artist {
@@ -295,37 +296,40 @@ button:focus,
   color: var(--highlight-color);
   font-size: 0.875rem;
 }
-.player-info{
-   flex: 1;
+
+.player-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 0; /* MOBİL DÜZELTME */
+  min-width: 0;
 }
+
 .player-info p {
   margin: 0;
 }
+
 #player-song-title {
   font-size: 1.125rem;
-  color:var(--primary-color);
-  margin-bottom:5px;
+  color: var(--primary-color);
+  margin-bottom: 5px;
 }
 
 .playlist-song-title {
   font-size: 0.85rem;
   width: 241px;
   text-align: left;
-  white-space: nowrap; /* MOBİL DÜZELTME */
-  overflow: hidden; /* MOBİL DÜZELTME */
-  text-overflow: ellipsis; /* MOBİL DÜZELTME */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playlist-song-artist {
   font-size: 0.725rem;
   width: 80px;
-  white-space: nowrap; /* MOBİL DÜZELTME */
-  overflow: hidden; /* MOBİL DÜZELTME */
-  text-overflow: ellipsis; /* MOBİL DÜZELTME */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playlist-song-duration {
@@ -351,7 +355,245 @@ button:focus,
   fill: #ff0000;
 }
 
-/* MOBİL DÜZENLEMELER - GÜNCELLENMİŞ */
+/* Progress Bar */
+.progress-container {
+  flex: 0 0 auto;
+  margin: 10px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 5px;
+  background: var(--foreground-color);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--highlight-color);
+  cursor: pointer;
+}
+
+.progress-bar::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--highlight-color);
+  cursor: pointer;
+  border: none;
+}
+
+.time {
+  font-size: 0.75rem;
+  font-family: var(--font-headline);
+  color: var(--primary-color);
+  min-width: 40px;
+  text-align: center;
+}
+
+/* VOLUME CONTROL */
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  max-width: 100px;
+  margin-left: 5px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.volume-container:hover {
+  max-width: 160px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: -2px -6px;
+}
+
+.volume-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+.volume-btn svg {
+  fill: var(--primary-color);
+  transition: fill 0.25s ease;
+  width: 18px;
+  height: 18px;
+}
+
+.volume-btn:hover svg {
+  fill: var(--highlight-color);
+}
+
+.volume-slider {
+  width: 0;
+  height: 4px;
+  background: var(--foreground-color);
+  border-radius: 2px;
+  outline: 0px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.volume-container:hover .volume-slider {
+  width: 80px;
+  opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--highlight-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--highlight-color);
+  cursor: pointer;
+  border: none;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Mute durumu */
+.muted #volume-wave {
+  display: none;
+}
+
+.volume-btn.muted svg {
+  fill: #ff4444;
+}
+
+/* Repeat butonu */
+.repeat {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.repeat svg {
+  transition: all 0.2s ease;
+}
+
+.repeat:hover svg {
+  transform: scale(1.1);
+}
+
+/* Repeat stilleri */
+.repeat-all #repeat-path {
+  stroke: var(--highlight-color);
+}
+
+.repeat-one #repeat-path,
+.repeat-one #repeat-one {
+  stroke: var(--highlight-color);
+}
+
+.repeat-one #repeat-one {
+  display: block !important;
+}
+
+/* Tema değiştirme butonu */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.theme-toggle svg {
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: scale(1.1);
+}
+
+/* Light tema */
+.light-theme {
+  --app-background-color: #e29fea;
+  --background-color: #f58e8e;
+  --foreground-color: #e0e0e0;
+  --primary-color: #333333;
+  --secondary-color: #666666;
+  --highlight-color: #df68e1;
+  --accent-color: #d46add;
+}
+
+.light-theme .theme-toggle #sun-icon,
+.light-theme .theme-toggle #sun-rays {
+  display: none;
+}
+
+.light-theme .theme-toggle #moon-icon {
+  display: block !important;
+}
+
+/* Dark tema (varsayılan) */
+.dark-theme .theme-toggle #moon-icon {
+  display: none;
+}
+
+.dark-theme .theme-toggle #sun-icon,
+.dark-theme .theme-toggle #sun-rays {
+  display: block;
+}
+
+/* Modern Klavye Kısayol Stilleri */
+#keyboard-shortcuts-help {
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--highlight-color) !important;
+}
+
+#keyboard-shortcuts-help kbd {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  background: var(--foreground-color) !important;
+  min-width: 30px;
+  display: inline-block;
+  text-align: center;
+}
+
+#keyboard-feedback {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* MOBİL DÜZENLEMELER */
 @media (max-width: 700px) {
   .container {
     padding: 5px;
@@ -427,10 +669,6 @@ button:focus,
   .playlist-song-artist {
     width: 50px;
     font-size: 0.7rem;
-  }
-
-  .playlist-song-duration > button {
-    padding: 0;
   }
 
   .player-content {
@@ -509,149 +747,20 @@ button:focus,
     text-overflow: ellipsis;
     max-width: 100%;
   }
-}
-/*progress Bar*/
-.progress-container{
-flex: 0 0 auto;
-margin:10px;
-}
 
-.progress-bar{
-  flex:1;
-  height:5px;
-  background:var(--foreground-color);
-  border-radius:5px;
-  outline:none;
-  cursor:pointer;
-  -webkit-appearance:none;
-}
-
-.progress-bar::-webkit-slider-thumb{
-  -webkit-appearance:none;
-  width:15px;
-  height:15px;
-  border-radius:50%;
-  background:var(--highlight-color);
-  cursor:pointer;
-}
-.progress-bar::-moz-range-thumb{
-  width:15px;
-  height:15px;
-  border-radius:50%;
-  background:var(--highlight-color);
-  cursor:pointer;
-  border:none;
-}
-.time{
-  font-size:0.75rem;
-  font-family:var(--font-headline);
-  color:var(--primary-color);
-  min-width:40px;
-  text-align:center;
-}
-/*Responsive tasarım ayarı*/
-@media(max-width:700px){
-  .progress-container{
-    gap:5px;
+  /* Progress bar mobil */
+  .progress-container {
+    gap: 5px;
     margin: 8px;
     width: 100%;
   }
-  .time{
-    font-size:0.65rem;
-    min-width:35px;
+
+  .time {
+    font-size: 0.65rem;
+    min-width: 35px;
   }
-}
 
-/* VOLUME CONTROL DÜZELTMESİ - HOVER ÖZELLİKLİ */
-.volume-container{
-  display:flex;
-  align-items:center;
-  gap:3px;
-  max-width: 100px;
-  margin-left: 5px;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.volume-container:hover {
-  max-width: 160px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
-  padding: 2px 6px;
-  margin: -2px -6px;
-}
-
-.volume-btn {
-background-color:transparent;
-border:none;
-cursor:pointer;
-padding:5px;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-shrink: 0;
-min-width: 32px;
-}
-.volume-btn svg{
-  fill:var(--primary-color);
-  transition:fill 0.25s ease;
-  width: 18px;
-  height: 18px;
-}
-.volume-btn:hover svg{
-  fill:var(--highlight-color);
-}
-.volume-slider{
-  width:0;
-  height:4px;
-  background:var(--foreground-color);
-  border-radius:2px;
-  outline:0px;
-  cursor:pointer;
-  -webkit-appearance: none;
-  flex-shrink: 0;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.volume-container:hover .volume-slider {
-  width: 80px;
-  opacity: 1;
-}
-
-.volume-slider::-webkit-slider-thumb{
-  -webkit-appearance:none;
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  background:var(--highlight-color);
-  cursor:pointer;
-  transition: all 0.2s ease;
-}
-.volume-slider::-moz-range-thumb{
-    width:12px;
-  height:12px;
-  border-radius:50%;
-  background:var(--highlight-color);
-  cursor:pointer;
-  border:none;
-}
-
-.volume-slider::-webkit-slider-thumb:hover{
-  transform:scale(1.2);
-}
-/* Mute durumu*/
-.muted #volume-wave {
-  display:none;
-}
-
-.volume-btn.muted  svg {
-  fill:#ff4444;
-}
-
-/* Mobilde slider her zaman görünsün */
-@media(max-width:700px){
+  /* Volume control mobil */
   .player-buttons {
     gap: 3px;
     padding: 0 2px;
@@ -664,8 +773,8 @@ min-width: 32px;
     height: 28px;
   }
   
-  .volume-container{
-    gap:3px;
+  .volume-container {
+    gap: 3px;
     max-width: 120px;
   }
   
@@ -676,8 +785,8 @@ min-width: 32px;
     margin: 0;
   }
   
-  .volume-slider{
-    width:60px !important;
+  .volume-slider {
+    width: 60px !important;
     opacity: 1 !important;
   }
   
@@ -690,36 +799,8 @@ min-width: 32px;
     width: 16px;
     height: 16px;
   }
-}
 
-.repeat{
-  background:transparent;
-  border:none;
-  cursor:pointer;
-  padding:5px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.repeat svg{
-  transition:all 0.2s ease;
-}
-.repeat:hover svg{
-  transform:scale(1.1);
-}
-/*Repeat stilleri*/
-.repeat-all #repeat-path{
-  stroke:var(--highlight-color);
-}
-.repeat-one #repeat-path,.repeat-one #repeat-one{
-  stroke:var(--highlight-color);
-}
-.repeat-one #repeat-one{
-  display:block !important;
-}
-/*mobil responsive*/
-@media (max-width: 700px) {
+  /* Repeat mobil */
   .repeat {
     padding: 3px;
   }
@@ -728,59 +809,8 @@ min-width: 32px;
     width: 18px;
     height: 18px;
   }
-}
 
-.theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 10px;
-}
-
-.theme-toggle svg {
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover svg {
-  transform: scale(1.1);
-}
-
-/* Light tema */
-.light-theme {
-  --app-background-color: #e29fea;
-  --background-color: #f58e8e;
-  --foreground-color: #e0e0e0;
-  --primary-color: #333333;
-  --secondary-color: #666666;
-  --highlight-color: #df68e1;
-  --accent-color: #d46add;
-}
-
-.light-theme .theme-toggle #sun-icon,
-.light-theme .theme-toggle #sun-rays {
-  display: none;
-}
-
-.light-theme .theme-toggle #moon-icon {
-  display: block !important;
-}
-
-/* Dark tema (varsayılan) */
-.dark-theme .theme-toggle #moon-icon {
-  display: none;
-}
-
-.dark-theme .theme-toggle #sun-icon,
-.dark-theme .theme-toggle #sun-rays {
-  display: block;
-}
-
-/* Mobile responsive */
-@media (max-width: 700px) {
+  /* Theme toggle mobil */
   .theme-toggle {
     padding: 3px;
     margin: 0 5px;
@@ -790,30 +820,8 @@ min-width: 32px;
     width: 18px;
     height: 18px;
   }
-}
 
-/* Modern Klavye Kısayol Stilleri */
-#keyboard-shortcuts-help {
-  backdrop-filter: blur(10px);
-    border: 2px solid var(--highlight-color) !important;
-}
-
-#keyboard-shortcuts-help kbd {
-  font-family: 'Roboto Mono', monospace;
-  font-weight:bold;
-  background: var(--foreground-color) !important;
-  min-width: 30px;
-  display: inline-block;
-  text-align: center;
-}
-
-#keyboard-feedback {
-  font-weight: bold;
-  letter-spacing: 0.5px;
-}
-
-/* Mobile'da yardım penceresini iyileştir */
-@media (max-width: 700px) {
+  /* Mobile'da yardım penceresini iyileştir */
   #keyboard-shortcuts-help {
     padding: 20px !important;
     max-width: 95% !important;
@@ -824,7 +832,7 @@ min-width: 32px;
   }
 }
 
-/* EK MOBİL İYİLEŞTİRMELER */
+/* ÇOK KÜÇÜK EKRANLAR İÇİN EK DÜZENLEMELER */
 @media (max-width: 480px) {
   .playlist-song-title {
     width: 120px;
@@ -848,5 +856,10 @@ min-width: 32px;
   
   .playlist-title {
     font-size: 0.9rem;
+  }
+  
+  .player-content {
+    padding: 8px;
+    gap: 10px;
   }
 }
